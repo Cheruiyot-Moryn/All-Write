@@ -1,0 +1,50 @@
+
+{% extends 'base.html'%}
+{% block content %}
+
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>{{blog.blog_title}}</h1>
+                    <span class="meta">Posted by
+                        <a href="{{url_for('main.profile', id = blog.user_id)}}">{{blog.blog_by}}</a>
+                        on {{blog.posted_at.strftime('%B %d, %Y')}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="content">
+                    {{blog.blog_content | safe}}
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<hr>
+
+<div class="make-comment">
+    <a href="{{url_for('main.make_comment', id=blog.id)}}">COMMENT
+    </a>
+    <form class="form-group mt-2" method="POST">
+        {{comment_form.hidden_tag()}}
+        {{comment_form.nicname(class = "form-control", placeholder = "Enter a nickname")}}
+        <br>
+        {{comment_form.comment(class = "form-control", placeholder = "Write a comment")}}
+
+        <div class="text-right" style="margin-top: 10px;">
+            {{comment_form.submit(class = "btn btn-outline-dark btn-sm")}}
+        </div>
+    </form>
+</div>
+
+{%endblock%}
