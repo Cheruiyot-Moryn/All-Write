@@ -91,3 +91,31 @@ class Subscriber(db.Model):
     def __repr__(self):
         return f'Subscriber {self.email}'
    
+# Blog Class
+class Blog(db.Model):
+    __tablename__ = "blogs"
+
+    id = db.Column(db.Integer, primary_key = True)
+    blog_title = db.Column(db.String)
+    blog_content = db.Column(db.Text)
+    posted_at = db.Column(db.DateTime)
+    blog_by = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    comments = db.relationship("Comment", backref = "blog", lazy = "dynamic")
+
+    def save_blog(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_blog(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def get_user_blog(cls,id):
+        blogs = Blog.query.filter_by(user_id = id).order_by(Blog.posted_at.desc()).all()
+        return blogs
+
+    @classmethod
+    def get_all_blogs(cls):
+        return Blog.query.order_by(Blog.posted_at).all()   
