@@ -11,15 +11,15 @@ from ..email import mail_message
 
 @main.route("/", methods = ["GET", "POST"])
 def index():
-    blogs = Blog.get_all_blogs()
+    blog = Blog.get_all_blog()
     quote = get_quote()
 
     if request.method == "POST":
         new_subscriber = Subscriber(email = request.form.get("subscriber"))
         db.session.add(new_subscriber)
         db.session.commit()
-        mail_message("Thank you for subscribing to BLOG IT!", "email/welcome", new_subscriber.email)
-    return render_template("index.html",blogs= blogs,quote = quote)
+        mail_message("Thank you for subscribing to ALL-WRITE!", "email/welcome", new_subscriber.email)
+    return render_template("index.html",blog= blog,quote = quote)
 
 
 @main.route("/comment/<int:id>", methods = ["POST", "GET"])
@@ -106,6 +106,5 @@ def delete_comment(id):
     comment =Comment.query.get_or_404(id)
     db.session.delete(comment)
     db.session.commit()
-    flash('comment succesfully deleted')
+    flash('comment deleted')
     return redirect (url_for('main.index'))
-

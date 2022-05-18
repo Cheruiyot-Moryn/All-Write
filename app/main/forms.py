@@ -1,19 +1,19 @@
 from flask_wtf import FlaskForm
 from wtforms import (StringField, TextAreaField,SubmitField)
-from wtforms.validators import Required
+from wtforms.validators import InputRequired
 
 class BlogForm(FlaskForm):
-    title = StringField("Blog title:", validators=[Required()])
-    blog = TextAreaField("Type:", validators=[Required()])
+    title = StringField("Blog title:", validators=[InputRequired()])
+    blog = TextAreaField("Type:", validators=[InputRequired()])
     submit = SubmitField("Post")
 
 class UpdateBlogForm(FlaskForm):
-    title = StringField("Blog title", validators=[Required()])
-    blog = TextAreaField("Type", validators=[Required()])
+    title = StringField("Blog title", validators=[InputRequired()])
+    blog = TextAreaField("Type", validators=[InputRequired()])
     submit = SubmitField("Update")
 
 class CommentForm(FlaskForm):
-    comment = TextAreaField("Post Comment", validators=[Required()])
+    comment = TextAreaField("Post Comment", validators=[InputRequired()])
     nicname= StringField("Comment Alias")
     submit = SubmitField("Comment")
 

@@ -55,7 +55,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     comment = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
-    blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
+    blog_id = db.Column(db.Integer,db.ForeignKey("blog.id"))
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
     def save_comment(self):
@@ -93,7 +93,7 @@ class Subscriber(db.Model):
    
 # Blog Class
 class Blog(db.Model):
-    __tablename__ = "blogs"
+    __tablename__ = "blog"
 
     id = db.Column(db.Integer, primary_key = True)
     blog_title = db.Column(db.String)
@@ -117,7 +117,7 @@ class Blog(db.Model):
         return blogs
 
     @classmethod
-    def get_all_blogs(cls):
+    def get_all_blog(cls):
         return Blog.query.order_by(Blog.posted_at).all()
     
 #Random Quote Class

@@ -1,4 +1,4 @@
-from wtforms.validators import Required, Email, EqualTo
+from wtforms.validators import InputRequired, Email, EqualTo
 from wtforms import StringField, PasswordField, SubmitField, ValidationError, BooleanField
 from flask_wtf import FlaskForm
 from ..models import User
@@ -9,10 +9,10 @@ class RegistrationForm(FlaskForm):
     RegstrationForm class that passes in the required details for validation
     """
 
-    email = StringField('Your Email Address', validators=[Required(), Email()])
-    username = StringField('Your Username', validators=[Required()])
-    password = PasswordField('  Password', validators=[Required(), EqualTo('password',message='passwords must match')])
-    password_confirm = PasswordField('Confirm Password', validators=[Required()])
+    email = StringField('Your Email Address', validators=[InputRequired(), Email()])
+    username = StringField('Your Username', validators=[InputRequired()])
+    password = PasswordField('  Password', validators=[InputRequired(), EqualTo('password',message='passwords must match')])
+    password_confirm = PasswordField('Confirm Password', validators=[InputRequired()])
     submit = SubmitField('Sign Up')
 
 
@@ -30,12 +30,12 @@ class RegistrationForm(FlaskForm):
         Function checks if the username is unique and raises ValidationError
         """
         if User.query.filter_by(username = data_field.data).first():
-            raise ValidationError('Sorry, this user name is already taken. Try another one')
+            raise ValidationError('Sorry, this user name is taken. Try another one')
 
 
 #login class  takes three inputs from the user
 class LoginForm(FlaskForm):
-    email = StringField('Your email address', validators=[Required(),Email()])
-    password = PasswordField('Password', validators=[Required()])
+    email = StringField('Your email address', validators=[InputRequired(),Email()])
+    password = PasswordField('Password', validators=[InputRequired()])
     remember = BooleanField('Remember me')
     submit = SubmitField('Sign In')

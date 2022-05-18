@@ -19,11 +19,12 @@ You need the following to start working on this project: On your local systems;
 
 ### Project SetUp
 
-1. Git clone    https://github.com/Chebichii-Lab/Blog.git
+1. Git clone [https://github.com/Cheruiyot-Moryn/All-Write.git]
 2. Navigate to the folder using the terminal
 3. Run the Files.
-4. Install The Virtual Environment 
-    $ pip install virtualvenv
+4. Install The Virtual Environment
+
+    $pip install virtualvenv
 
 5. Make the virtual environment active
     $ source virtual/bin/activate
@@ -32,7 +33,7 @@ You need the following to start working on this project: On your local systems;
 
 In your terminal, run the following commands;
 
-    $ chmod a+x start.sh
+    $chmod a+x start.sh
 
 ## Technologies Used
 
@@ -41,9 +42,9 @@ In your terminal, run the following commands;
 3. Bootstrap
 4. Flask
 
-## Live Site 
+## Live Site
 
-View [live](https://blog254.herokuapp.com/).
+View [live](https://all-write.herokuapp.com/).
 
 ## License
 

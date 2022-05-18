@@ -4,10 +4,11 @@ class Config:
     '''
     General configuration parent class
     '''
-    
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SECRET_KEY = 'qwerty'
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
-
+    QUOTES_API_URL='http://quotes.stormconsultancy.co.uk/random.json'
+    
      #email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
@@ -25,12 +26,15 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
-       SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://")
-
+    # URI = os.environ.get('DATABASE_URL')
+    # if URI and URI.startswith('postgres://'):
+    #    URI = URI.replace('postgres://', 'postgresql://', 1)
+       
+    # SQLALCHEMY_DATABASE_URI = URI
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moureen:12345@localhost'
+    
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:moureen@localhost/blog_test'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moureen:12345@localhost/all_write_test'
 
 class DevConfig(Config):
     '''
@@ -38,7 +42,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:moureen@localhost/blog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moureen:12345@localhost/all_write'
 
     DEBUG = True
 

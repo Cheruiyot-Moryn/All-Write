@@ -11,7 +11,7 @@ class UserModelTest(unittest.TestCase):
         Set up method that will run before every Test
         """
 
-        self.new_user = User(username='mylo', password = 'mylo254')
+        self.new_user = User(username='to', password = 'toto')
 
 
     def test_password_setter(self):
@@ -23,11 +23,11 @@ class UserModelTest(unittest.TestCase):
 
 
     def test_password_verification(self):
-        self.assertTrue(self.new_user.verify_password('mylo254'))
+        self.assertTrue(self.new_user.verify_password('toto'))
 
 
 
     def tearDown(self):
-        user = User.query.filter_by(username="mylo").first()
+        user = User.query.filter_by(username="to").first()
         if user:
             print("found")

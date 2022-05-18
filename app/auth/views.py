@@ -17,7 +17,7 @@ def login():
             login_user(user,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
         flash('Invalid username or Password')
-    title = "BLOG IT! login"
+    title = "ALL-WRITE! login"
     return render_template('auth/login.html',login_form = login_form,title=title)
 
 
@@ -29,13 +29,11 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        # mail_message("Welcome to BLOG IT!","email/welcome_user",user.email,user=user)
+        # mail_message("Welcome to ALL-WRITE!","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('auth.login'))
-        title = "BLOG IT!!"
+        title = "ALL-WRITE!!"
     return render_template('auth/register.html',registration_form = form)
-
-
 
 @auth.route('/logout')
 @login_required

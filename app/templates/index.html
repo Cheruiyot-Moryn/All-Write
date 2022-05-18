@@ -3,7 +3,7 @@
 <div id="background">
   <style>
     #background{
-      background-image: url('../static/https://unsplash.com/photos/7BvVBjAtuS4');
+      background-image: url('../static/photos/photo-1561571994-3c61c554181a.jpeg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
@@ -16,8 +16,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10">
           <div class="site-heading">
-            <span class="subheading" style="color: white; font-size: 20px; text-align: center;"><i class="fas fa-quote-left"></i> <em>{{quote.quote}}</em> <i class="fas fa-quote-right"></i></span>
-            <h2 style="color: white; text-align: center;">{{quote.author}}</h2>
+            <span class="subheading" style="color: rgb(19, 17, 17); font-size: 20px; text-align: center;"><i class="fas fa-quote-left"></i> <em>{{quote.quote}}</em> <i class="fas fa-quote-right"></i></span>
+            <h2 style="color: rgb(15, 15, 15); text-align: center;">{{quote.author}}</h2>
           </div>
         </div>
       </div>
@@ -31,25 +31,25 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        {%for blog in blogs[::-1]%}
+        {%for blog in blog[::-1]%}
         <div class="post-preview">
           <a href="{{url_for('main.new_blog', id = blog.id)}}">
-            <h2 class="blog-title" style="color: white; font-family: 'Macondo', cursive; font-size: 50px; font-weight: bold;">
+            <h2 class="blog-title" style="color: rgb(85, 7, 7); font-family: 'Macondo', cursive; font-size: 50px; font-weight: bold;">
               {{blog.blog_title}}
             </h2>
-            <h3 class="blo-subtitle" style="color: white; font-family: 'Macondo', cursive; font-size: 40px;">
+            <h3 class="blo-subtitle" style="color: rgb(95, 9, 9); font-family: 'Macondo', cursive; font-size: 40px;">
               {{blog.blog_content | truncate (45) | safe}}
             </h3>
           </a>
          
-          <p class="post-meta" style="color: white; font-size:20px; font-family: 'Macondo', cursive; font-weight: bold;" >Posted by
-            <a href="" style="color: white;">{{blog.posted_at}}</a> on
+          <p class="post-meta" style="color: rgb(95, 212, 16); font-size:20px; font-family: 'Macondo', cursive; font-weight: bold;" >Posted by
+            <a href="" style="color: rgb(120, 218, 30);">{{blog.posted_at}}</a> on
             {{blog.posted_at.strftime('%B %d, %Y')}}
           </p>
         </div>
         <a href="{{url_for('main.update_blog', id=blog.id)}}" style="color:royalblue; font-size: 30px; font-weight: bold;">UPDATE YOUR BLOG
           <br>
-        <a href="{{url_for('main.make_comment', id=blog.id)}}" style="color: gray; font-size: 30px; font-weight: bold;">COMMENT
+        <a href="{{url_for('main.make_comment', id=blog.id)}}" style="color: rgb(10, 1, 1); font-size: 30px; font-weight: bold;">COMMENT
           <br>
           <a href="{{url_for('main.delete_blog',id = blog.id)}}" style="color: maroon; font-size: 30px; font-weight: bold;"><i class="fas fa-trash text-danger"></i>DELETE</a>
         </a>
